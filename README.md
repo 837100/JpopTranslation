@@ -4,4 +4,4 @@ aimyon's songs are recommended in three categories.
 
 三つのカテゴリで組み合わせてあいみょんの曲をお勧めするサイト。
 
-https://aimyonosusume.netlify.app/
+https://837100.github.io/aimyonosusume/
