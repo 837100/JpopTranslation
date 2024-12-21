@@ -3,11 +3,6 @@
     flex-direction: column;
 }
 
-.question {
-    display: none;
-}
-
-
 .result {
     display: none;
     flex-direction: column;
@@ -17,14 +12,10 @@
     /* 텍스트 정렬 */
 }
 
-#img {
-    width: 300px;
-    height: 300px;
-    margin-bottom: 20px;
-    /* 이미지와 텍스트 간 간격 */
-}
 
 
+/* 쿠팡 파트너스 광고
+ */
 #ad-container {
     width: 100%;
     /* 부모 요소의 너비를 따라감 */
@@ -37,10 +28,19 @@
 }
 
 .start {
- 
+
     flex-direction: column;
     align-items: center;
     /* 가로 방향 중앙 정렬 */
     text-align: center;
+    justify-content: center;
     /* 텍스트 정렬 */
+}
+
+
+#img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    /* 이미지와 텍스트 간 간격 */
 }

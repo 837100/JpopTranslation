@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="container">
+<body>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -20,86 +20,154 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
 
-        <div id="ad-container">
-            <script src="https://ads-partners.coupang.com/g.js"></script>
-            <script>
-                new PartnersCoupang.G({
-                    "id": 784952,
-                    "trackingCode": "AF1315244",
-                    "subId": null,
-                    "template": "carousel",
-                    "width": "100%", // 너비를 100%로 설정
-                    "height": "auto" // 높이를 자동으로 설정
-                });
-            </script>
-            <p class="mt5">"이 링크는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."</p>
-        </div>
-    
+    <div id="ad-container">
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+            new PartnersCoupang.G({
+                "id": 784952,
+                "trackingCode": "AF1315244",
+                "subId": null,
+                "template": "carousel",
+                "width": "100%", // 너비를 100%로 설정
+                "height": "auto" // 높이를 자동으로 설정
+            });
+        </script>
+        <p class="mt5">"이 링크는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."</p>
+    </div>
+
 
     <article class="start text-center">
         <h1 class="mt-5">아이묭 노래 장르별 추천</h1>
-        <img id="img" class="rounded-circle mt-5" src="aimyon.webp" alt="aimyon">
+        <!-- <img id="img" class="rounded-circle mt-5" src="image/aimyon.webp" alt="aimyon"> -->
+        <div class="container text-center">
+            <div class="overlay"></div>
+            <div class="card rounded-circle mt-5"></div>
+        </div>
+
         <div class="mt-4">
-        <button type="button" id="th1" class="btn btn-outline-primary toggle-btn mt-2" data-value="쓸쓸함">쓸쓸함</button>
-        <button type="button" id="th2" class="btn btn-outline-primary toggle-btn mt-2" data-value="따뜻함">따뜻함</button>
-        <button type="button" id="th3" class="btn btn-outline-primary toggle-btn mt-2" data-value="사랑스러움">사랑스러움</button>
-        <button type="button" id="th4" class="btn btn-outline-primary toggle-btn mt-2" data-value="밝음">밝음</button>
-    </div>
-    <button id="submit-btn" class="btn btn-success mt-4 text-center" disabled>제출</button>
+            <button type="button" id="th1" class="btn btn-outline-primary toggle-btn mt-2" data-value="쓸쓸함">쓸쓸함</button>
+            <button type="button" id="th2" class="btn btn-outline-primary toggle-btn mt-2" data-value="따뜻함">따뜻함</button>
+            <button type="button" id="th3" class="btn btn-outline-primary toggle-btn mt-2"
+                data-value="사랑스러움">사랑스러움</button>
+            <button type="button" id="th4" class="btn btn-outline-primary toggle-btn mt-2" data-value="밝음">밝음</button>
+        </div>
+        <button id="submit-btn" class="btn btn-success mt-4 text-center" disabled>제출</button>
 
-    <script>
-        var container = document.querySelector(".container");
-        container.addEventListener("mousemove", function(){
-            container.img = "transform: rotateY(20deg)"
-        });
-    </script>
 
-    <script>
-        let selectedThemes = [];
-        const themeToNumber = {
-            "쓸쓸함": 1,
-            "따뜻함": 2,
-            "사랑스러움": 3,
-            "밝음": 4
-        };
 
-        // 토글 버튼 클릭 이벤트
-        document.querySelectorAll('.toggle-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const value = button.getAttribute('data-value');
+        <script>
+            var card = document.querySelector(".card");
+            var overlay = document.querySelector(".overlay");
+            card.addEventListener("mousemove", function (e) {
+                var x = e.offsetX;
+                var y = e.offsetY;
+                console.log(x, y);
+                var rotateY = -1 / 5 * x + 30;
+                var rotateX = 4 / 30 * y - 30;
 
-                if (selectedThemes.includes(value)) {
-                    // 이미 선택된 버튼을 다시 클릭한 경우 선택 해제
-                    selectedThemes = selectedThemes.filter(theme => theme !== value);
-                    button.classList.remove('btn-primary');
-                    button.classList.add('btn-outline-primary');
-                } else {
-                    // 최대 3개의 버튼만 선택 가능
-                    if (selectedThemes.length < 3) {
-                        selectedThemes.push(value);
-                        button.classList.remove('btn-outline-primary');
-                        button.classList.add('btn-primary');
-                    }
-                }
+               overlay.style.backgroundPosition = `${x / 5 + y / 5}% ${x / 5 + y / 5}%`;
 
-                // 제출 버튼 활성화/비활성화
-                const submitBtn = document.getElementById('submit-btn');
-                submitBtn.disabled = selectedThemes.length !== 3;
+
+                card.style.transform = ` perspective(350px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+
             });
-        });
 
-        // 제출 버튼 클릭 이벤트
-        document.getElementById('submit-btn').addEventListener('click', () => {
-            if (selectedThemes.length === 3) {
-                // 선택된 테마들을 숫자로 변환 후 쿼리 매개변수로 보내기
-                const themeNumbers = selectedThemes.map(theme => themeToNumber[theme]).sort().join(',');
-                const nextPageUrl = `nextpage.html?themes=${encodeURIComponent(themeNumbers)}`;
-                
-                // 페이지 이동
-                window.location.href = nextPageUrl;
+
+            card.addEventListener("mouseleave", function () {
+                // 마우스가 나가면 원래 상태로 초기화
+                card.style.transform = "rotateY(0deg) rotateX(0deg)";
+            });
+
+        </script>
+
+        <style>
+            .card {
+                width: 300px;
+                height: 300px;
+                background-position: center;
+
+                background-image: url(image/aimyon.webp);
+                background-size: cover;
+                margin-bottom: 20px;
+                display: flex;
+                flex-direction: column;
+                border-radius: 50%;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                transition: transform 0.1s ease-in-out;
+                align-items: center;
+                text-align: center;
             }
-        });
-    </script>
+
+            .overlay {
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                background: linear-gradient(105deg,
+                        transparent 40%, rgba(255, 219, 112, 0.8) 45%,
+                        rgba(132, 50, 255, 0.6) 50%, transprent 54%);
+                filter: brightness(1.2) opacity(0.8);
+                mix-blend-mode: color-dodge;
+                background-size: 150% 150%;
+                background-position: 100%;
+                transition: background-position 0.2s ease-out;
+
+            }
+
+            .container {
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+        </style>
+
+        <script>
+            let selectedThemes = [];
+            const themeToNumber = {
+                "쓸쓸함": 1,
+                "따뜻함": 2,
+                "사랑스러움": 3,
+                "밝음": 4
+            };
+
+            // 토글 버튼 클릭 이벤트
+            document.querySelectorAll('.toggle-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const value = button.getAttribute('data-value');
+
+                    if (selectedThemes.includes(value)) {
+                        // 이미 선택된 버튼을 다시 클릭한 경우 선택 해제
+                        selectedThemes = selectedThemes.filter(theme => theme !== value);
+                        button.classList.remove('btn-primary');
+                        button.classList.add('btn-outline-primary');
+                    } else {
+                        // 최대 3개의 버튼만 선택 가능
+                        if (selectedThemes.length < 3) {
+                            selectedThemes.push(value);
+                            button.classList.remove('btn-outline-primary');
+                            button.classList.add('btn-primary');
+                        }
+                    }
+
+                    // 제출 버튼 활성화/비활성화
+                    const submitBtn = document.getElementById('submit-btn');
+                    submitBtn.disabled = selectedThemes.length !== 3;
+                });
+            });
+
+            // 제출 버튼 클릭 이벤트
+            document.getElementById('submit-btn').addEventListener('click', () => {
+                if (selectedThemes.length === 3) {
+                    // 선택된 테마들을 숫자로 변환 후 쿼리 매개변수로 보내기
+                    const themeNumbers = selectedThemes.map(theme => themeToNumber[theme]).sort().join(',');
+                    const nextPageUrl = `nextpage.html?themes=${encodeURIComponent(themeNumbers)}`;
+
+                    // 페이지 이동
+                    window.location.href = nextPageUrl;
+                }
+            });
+        </script>
 </body>
 
 </html>
