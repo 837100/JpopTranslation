@@ -7,7 +7,7 @@ body {
     padding: 0;
     position: relative;
     min-height: 100vh;
-   
+
 }
 
 body::before {
@@ -45,20 +45,25 @@ body::before {
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
-    width: 48vw;  /* 브라우저의 가로 크기에 비례하여 80% 크기 */
-    height: 28vw; /* 브라우저의 가로 크기에 비례하여 45% 크기 (비율 조정 가능) */
-    max-width: 100%; /* 최대 너비를 100%로 설정 */
-    max-height: 100vh; /* 최대 높이를 브라우저의 높이로 설정 */
+    width: 48vw;
+    /* 브라우저의 가로 크기에 비례하여 80% 크기 */
+    height: 28vw;
+    /* 브라우저의 가로 크기에 비례하여 45% 크기 (비율 조정 가능) */
+    max-width: 100%;
+    /* 최대 너비를 100%로 설정 */
+    max-height: 100vh;
+    /* 최대 높이를 브라우저의 높이로 설정 */
 
-    
+
 }
 
 
 #main {
-    
- margin-top: 28vw; /* 플레이어 높이에 맞춰서 가사 영역을 아래로 내리기 */
-    padding: 20px;
-  
 
-  
+    margin-top: 28vw;
+    /* 플레이어 높이에 맞춰서 가사 영역을 아래로 내리기 */
+    padding: 20px;
+
+
+
 }
