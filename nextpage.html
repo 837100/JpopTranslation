@@ -9,62 +9,76 @@
     <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="backgroundimg.css">
 
+
+    <style>
+        /* 플레이어를 고정시키는 스타일 */
+        #player {
+            position: fixed;
+            top: 250px;
+            /* 화면의 상단에서 10% 아래에 고정 */
+            left: 50%;
+            /* 화면의 중앙에 고정 */
+            transform: translateX(-50%);
+            z-index: 1000;
+            /* 가사나 다른 요소보다 위에 표시 */
+        }
+
+        #header {
+            position: fixed;
+            top: 50px;
+            /* 화면의 상단에서 10% 아래에 고정 */
+            left: 50%;
+            /* 화면의 중앙에 고정 */
+            transform: translateX(-50%);
+            z-index: 1000;
+            /* 가사나 다른 요소보다 위에 표시 */
+
+
+        }
+
+        #song-lyrics-container {
+            margin-top: 85%;
+            /* 플레이어의 높이와 여백을 고려한 시작 위치 */
+            padding: 20px;
+
+        }
+    </style>
+
+
 </head>
 
 <body class="container mt-5">
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-        crossorigin="anonymous"></script>
 
 
-        <header id="header">   
-    <div id="ad-container">
-        <script src="https://ads-partners.coupang.com/g.js"></script>
-        <script>
-            new PartnersCoupang.G({
-                "id": 784952,
-                "trackingCode": "AF1315244",
-                "subId": null,
-                "template": "carousel",
-                "width": "100%", // 너비를 100%로 설정
-                "height": "auto" // 높이를 자동으로 설정
-            });
-        </script>
-        <p class="mt5">"이 링크는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."</p>
-    </div>
-</header>
+
+    <header id="header">
+        <div id="ad-container">
+            <script src="https://ads-partners.coupang.com/g.js"></script>
+            <script>
+                new PartnersCoupang.G({
+                    "id": 784952,
+                    "trackingCode": "AF1315244",
+                    "subId": null,
+                    "template": "carousel",
+                    "width": "100%", // 너비를 100%로 설정
+                    "height": "auto" // 높이를 자동으로 설정
+                });
+            </script>
+            <p class="mt5">"이 링크는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."</p>
+        </div>
+    </header>
 
     <button class="menu-btn" onclick="toggleSidebar()">☰ 메뉴</button>
     <div id="sidebar-container"></div>
-    <script>
-        // sidebar.html 파일을 로드하는 함수
-        fetch('sidebar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('sidebar-container').innerHTML = data;
-            })
-            .catch(error => console.error('Sidebar 로드 중 오류 발생:', error));
-    </script>
-
-    <script>
-        // 사이드바 토글 함수
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('open');
-        }
-    </script>
-
+  
 
 
     <!-- <div class="text-left mb-4">
         <a href="index.html" class="btn btn-outline-primary">추천 페이지로 돌아가기</a>
     </div> -->
-  
-        <h1 id="song-title" class="text-center"></h1>
+
+    <h1 id="song-title" class="text-center"></h1>
 
 
     <div class="text-center mt-4">
@@ -75,10 +89,49 @@
 
 
 
-    <div class="mt-5">
+    <main id="song-lyrics-container" class="mt-5">
         <h2 class="text-center mt-3">가사</h2>
         <pre id="song-lyrics" class="text-center mt-3" style="font-size: large;"></pre>
+    </main>
+
+    <div class="text-center mb-4">
+        <a href="index.html" class="btn btn-outline-primary">추천 페이지로 돌아가기</a>
     </div>
+
+    <div style="position: fixed; bottom:5px; right:5px">
+        <a href="#header"><img src="up-arrow.png" title="위로 가기" style="width: 50px; height: 50px;"> </a>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+
+
+        <script>
+            // sidebar.html 파일을 로드하는 함수
+            fetch('sidebar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('sidebar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Sidebar 로드 중 오류 발생:', error));
+        </script>
+    
+        <script>
+            // 사이드바 토글 함수
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('open');
+            }
+        </script>
+    
+
 
     <script>
 
@@ -95,12 +148,12 @@
                 lyricsFile: "kashi/anone.txt"
             },
             "2,3,4": {
-                title: "青春と青春と青春 (청춘과 청춘과 청춘))",
+                title: "青春と青春と青春 (청춘과 청춘과 청춘)",
                 videoId: "56l8Ex2jUXw",
                 lyricsFile: "kashi/seishuntoseishuntoseishun.txt"
             },
             "1,2,4": {
-                title: "どうせ死ぬなら (어짜피 죽는다면)",
+                title: "どうせ死ぬなら (어차피 죽는다면)",
                 videoId: "Qetpdg4C1IY",
                 lyricsFile: "kashi/dousesinunara.txt"
             },
@@ -156,13 +209,7 @@
 
 
     </script>
-    <div class="text-center mb-4">
-        <a href="index.html" class="btn btn-outline-primary">추천 페이지로 돌아가기</a>
-    </div>
 
-    <div style="position: fixed; bottom:5px; right:5px">
-        <a href="#header"><img src="up-arrow.png" title="위로 가기" style="width: 50px; height: 50px;"> </a>
-    </div>
 </body>
 
 </html>
