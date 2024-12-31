@@ -2,4 +2,4 @@
 
 個人的に好きなJ-POP曲の歌詞を韓国語で翻訳したサイト。
 
-https://github.com/837100/aimyonosusume
+https://837100.github.io/aimyonosusume/
