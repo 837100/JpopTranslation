@@ -1,9 +1,5 @@
-3가지 장르를 조합으로 아이묭의 곡을 추천하는 사이트.
+개인적으로 좋아하는 J-POP 노래 가사를 한국어로 번역한 사이트.
 
-aimyon's songs are recommended in three genre.
+個人的に好きなJ-POP曲の歌詞を韓国語で翻訳したサイト。
 
-三つのジャンルで組み合わせてあいみょんの曲をお勧めするサイト。
-
-https://837100.github.io/aimyonosusume/
-
-https://aimyonosusume.netlify.app/
+https://github.com/837100/aimyonosusume
