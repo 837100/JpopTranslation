@@ -44,4 +44,8 @@
 }
 
 
+body.always-open-sidebar .sidebar {
+    transform: translateX(0); /* 항상 열려 있음 */
+    display: block;
+}
 
