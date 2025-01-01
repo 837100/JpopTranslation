@@ -20,10 +20,15 @@
         .sidebar a:hover {
             background-color: #20d6b5;
         }
+
+        .menu-btn {
+            background-color: #0d7d36;
+            color: #fff;
+        }
     </style>
 </head>
 
-<body class="always-open-sidebar">
+<body>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -48,16 +53,14 @@
     </div>
 
 
+    <button class="menu-btn" onclick="toggleSidebar()">☰ 메뉴</button>
+    <div id="sidebar-container"></div>
+    <header id="header">
+        <div class="text-center mt-4">
+            <div id="player"></div>
+        </div>
+    </header>
 
-
-
-    <div class="sidebar" id="sidebar" style="position: fixed; top: 0; left: 0; z-index: 2000;">
-
-        <a href="mrsGreenAppleMain.html" style="font-weight: bold; text-decoration: underline; color: yellow;"">Home</a>
-        <a href=" mrsGreenApple.html?song=part-of-me">Part of me</a>
-        <a href="mrsGreenApple.html?song=soranji">soranji</a>
-
-    </div>
 
 
 
@@ -74,6 +77,40 @@
 
 
         </div>
+
+        <script>
+            function updateBodyClass() {
+                const body = document.body;
+
+                if (window.innerWidth >= 768) {
+                    body.className= 'sidebar.open';
+                } else {
+                    body.className= 'sidebar.open';
+                }
+                updateBodyClass();
+
+                // 브라우저 크기 변경 시 상태 업데이트
+                window.addEventListener('resize', updateBodyClass);
+            }
+
+        </script>
+        <script>
+            // sidebar.html 파일을 로드하는 함수
+            fetch('sidebar/mrssidebar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('sidebar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Sidebar 로드 중 오류 발생:', error));
+        </script>
+
+        <script>
+            // 사이드바 토글 함수
+            function toggleSidebar() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('open');
+            }
+        </script>
 
 
 
