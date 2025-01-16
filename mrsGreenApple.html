@@ -104,14 +104,25 @@
             // console.log(currentSongAdr)
             if (titles[currentSongAdr + 1] != null) {
                 const nextSong = titles[currentSongAdr + 1];
-                // console.log(nextSong)
                 document.getElementById('next-song').href = `mrsGreenApple.html?song=${nextSong}`
+            } else if (titles[currentSongAdr + 1] == null) {
+                const nextSong = titles[0];
+                document.getElementById('next-song').href = `mrsGreenApple.html?song=${nextSong}`
+            } else {
+                console.log("next song error")
             }
             if (titles[currentSongAdr - 1] != null) {
                 const prevSong = titles[currentSongAdr - 1];
                 // console.log(prevSong)
                 document.getElementById('prev-song').href = `mrsGreenApple.html?song=${prevSong}`
+            } else if (titles[currentSongAdr - 1] == null){
+                const prevSong = titles[titles.length-1];
+                document.getElementById('prev-song').href = `mrsGreenApple.html?song=${prevSong}`
+            } else {
+                console.log("prev song error")
             }
+
+            
         }
 
 
