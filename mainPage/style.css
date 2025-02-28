@@ -12,8 +12,6 @@
     /* 텍스트 정렬 */
 }
 
-
-
 /* 쿠팡 파트너스 광고
  */
 #ad-container {
@@ -25,11 +23,9 @@
     /* 높이는 비율에 맞게 자동 조절 */
     margin: 0 auto;
     /* 가운데 정렬 */
-
 }
 
 .start {
-
     flex-direction: column;
     align-items: center;
     /* 가로 방향 중앙 정렬 */
@@ -38,15 +34,12 @@
     /* 텍스트 정렬 */
 }
 
-
 #img {
     width: 300px;
     height: 300px;
     margin-bottom: 20px;
     /* 이미지와 텍스트 간 간격 */
 }
-
-
 
 .overlay {
     position: absolute;
@@ -60,20 +53,14 @@
     background-size: 150% 150%;
     background-position: 100%;
     transition: background-position 0.2s ease-out;
-
 }
 
 .container {
-
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
-
-
-
-
 
 /* 콘텐츠 스타일 */
 .content {
