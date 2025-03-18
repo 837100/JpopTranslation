@@ -22,25 +22,9 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
 
-    <div id="ad-container">
-        <script src="https://ads-partners.coupang.com/g.js"></script>
-        <script>
-            new PartnersCoupang.G({
-                "id": 784952,
-                "trackingCode": "AF1315244",
-                "subId": null,
-                "template": "carousel",
-                "width": "100%", // 너비를 100%로 설정
-                "height": "auto" // 높이를 자동으로 설정
-            });
-        </script>
-        <p class="mt5">"이 링크는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."</p>
-    </div>
-
-
 
     <button class="menu-btn" onclick="toggleSidebar()">☰ 메뉴</button>
-    <div id="sidebar-container"></div> 
+    <div id="sidebar-container"></div>
 
 
     <article class="start text-center">
@@ -55,49 +39,22 @@
             <a class="btn btn-primary" href="aimyonMain.html" role="button">あいみょん</a>
         </div>
         <script>
-            // sidebar.html 파일을 로드하는 함수
+            // sidebar.html ファイルをロードする関数
             fetch('sidebar/aimsidebar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('sidebar-container').innerHTML = data;
                 })
-                .catch(error => console.error('Sidebar 로드 중 오류 발생:', error));
+                .catch(error => console.error('Sidebarロード中エラー発生:', error));
         </script>
-    
+
         <script>
-            // 사이드바 토글 함수
+            // サイドバートグル関数
             function toggleSidebar() {
                 const sidebar = document.getElementById('sidebar');
                 sidebar.classList.toggle('open');
             }
         </script>
-
-
-        <!-- 프로필 사진 애니메이션 -->
-        <!-- <script>
-            var card = document.querySelector(".card");
-            var overlay = document.querySelector(".overlay");
-            card.addEventListener("mousemove", function (e) {
-                var x = e.offsetX;
-                var y = e.offsetY;
-                // console.log(x, y);
-                var rotateY = -1 / 5 * x + 30;
-                var rotateX = 4 / 30 * y - 30;
-
-                overlay.style.backgroundPosition = `${x / 5 + y / 5}% ${x / 5 + y / 5}%`;
-
-
-                card.style.transform = ` perspective(350px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-
-            });
-
-
-            card.addEventListener("mouseleave", function () {
-                // 마우스가 나가면 원래 상태로 초기화
-                card.style.transform = "rotateY(0deg) rotateX(0deg)";
-            });
-
-        </script> -->
 </body>
 
 </html>

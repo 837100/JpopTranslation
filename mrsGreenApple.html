@@ -103,6 +103,11 @@
                 title: "クダリ",
                 videoId: "j7MPiIabcbE",
                 lyricsFile: "kashi/mrskashi/kudari.txt"
+            },
+            "the-white-lounge": {
+                title: "The White Lounge (Live)",
+                videoId: "SJ9ArD0mig1YQfcc",
+                lyricsFile: "kashi/mrskashi/the-white-lounge.txt"
             }
         };
 
@@ -131,12 +136,9 @@
             } else {
                 console.log("prev song error")
             }
-
-            
         }
 
-
-        // sidebar.html 파일을 로드하는 함수
+        // sidebar.html ファイルをロードする関数
         fetch('sidebar/mrssidebar.html')
             .then(response => response.text())
             .then(data => {
